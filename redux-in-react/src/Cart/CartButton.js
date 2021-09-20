@@ -1,7 +1,15 @@
 import classes from './Cartbtn.module.css'
+import { useDispatch } from 'react-redux'
+import { cartActions } from '../components/store'
 
 const CartButton = ()=>{
-    return <div className=  {classes.btn}>
+    const dispatch = useDispatch()
+    const cartDisplay = ()=>{
+        dispatch(cartActions.toggleCart())
+    }
+   
+
+    return <div className=  {classes.btn} onClick={cartDisplay}>
         <h4>Cart</h4>
         <div className = {classes.spn}>
             0
