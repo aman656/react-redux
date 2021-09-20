@@ -1,0 +1,28 @@
+.header{
+    width: 100%;
+    height: 5rem;
+    padding: 0 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #252424;
+   
+}
+.header ul li{
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0.5rem ;
+    color: rebeccapurple;
+    border: 1px solid rebeccapurple;
+    border-radius: 10px;
+    font-size: 1.5rem;
+
+}
+.header ul li:hover{
+    color: #252424;
+    border: 1px solid #252424;
+    background-color: aliceblue;
+}
+.header h1{
+    color: beige;
+}
