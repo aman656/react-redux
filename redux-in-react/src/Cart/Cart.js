@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import classes from './Cart.module.css'
 import CartItem from './Cartitem';
 
@@ -5,15 +6,18 @@ import CartItem from './Cartitem';
 
 
 
+
+
 const Cart = (props) => {
-    const cartitems = [{id:"m1",name:"cutter",quantity:2,totalprice:20,price:10}]
+  const itemsincart = useSelector(state=>state.itemreducer.cartitems)
+ 
     return (
       <div className={classes.card}>
         <h2>Your Shopping Cart</h2>
         <ul>
-          {cartitems.map(item=><CartItem
+          {itemsincart.map(item=><CartItem
           key={item.id}
-            item={{id:item.id, title:item.name, quantity:item.quantity, total:item.totalprice, price:item.price}}/>)}
+            item={{id:item.id, title:item.title, quantity:item.quantity, total:item.totalprice, price:item.price}}/>)}
         </ul>
       </div>
     );
