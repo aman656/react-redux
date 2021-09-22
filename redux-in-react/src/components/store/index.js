@@ -29,6 +29,20 @@ const itemSlice = createSlice({
                 doesexist.quantity++;
                 doesexist.totalprice = doesexist.totalprice+  takenitem.price
             }
+        },
+        removeitem(state,action){
+            const takenid = action.payload
+            state.quantity--;
+            const doesexist = state.cartitems.find(item=>item.id===takenid)
+            if(doesexist.quantity===1){
+                state.cartitems = state.cartitems.filter(item=>item.id !==takenid)
+            }
+            else{
+                doesexist.quantity--;
+                doesexist.totalprice = doesexist.totalprice-doesexist.price
+            }
+
+            
         }
     }
 })

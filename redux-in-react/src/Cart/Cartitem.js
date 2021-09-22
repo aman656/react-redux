@@ -17,6 +17,9 @@ const CartItem = (props) => {
       }))
     
     }
+    const decreaseHandler = ()=>{
+      dispatch(itemActions.removeitem(id))
+    }
      
   
     return (
@@ -33,7 +36,7 @@ const CartItem = (props) => {
             x <span>{quantity}</span>
           </div>
           <div className={classes.actions}>
-            <button >-</button>
+            <button onClick={decreaseHandler}>-</button>
             <button onClick={increaseHandler}>+</button>
           </div>
         </div>
