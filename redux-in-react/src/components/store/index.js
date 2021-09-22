@@ -3,10 +3,17 @@ import {createSlice,configureStore} from '@reduxjs/toolkit'
 
 const cartSlice = createSlice({
     name:"cart",
-    initialState: {isShow:false},
+    initialState: {isShow:false,requestStatus:null},
     reducers:{
         toggleCart(state){
             state.isShow = !state.isShow;
+        },
+        showRequestStatus(state,action){
+            state.requestStatus ={
+                status:action.payload.status,
+                message:action.payload.message,
+                title:action.payload.title
+            }
         }
     }
 })
