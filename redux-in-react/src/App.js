@@ -6,6 +6,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import Request from './components/Request';
 import { cartActions } from './components/store';
+import { fetchingfromDataBase } from './components/store';
 
 import './App.css';
 
@@ -16,6 +17,14 @@ function App() {
   const overallCart = useSelector(state=>state.itemreducer)
   const notify = useSelector(state=>state.cartreducer.requestStatus)
   const dispatch = useDispatch()
+
+  useEffect(()=>{
+    dispatch(fetchingfromDataBase())
+
+  },[dispatch])
+
+
+
   useEffect(()=>{
     const sendingcartData = async()=>{
       dispatch(cartActions.showRequestStatus({
@@ -41,6 +50,7 @@ function App() {
       firstTime = false;
       return
     }
+    if(overallCart.issending ===true){
       sendingcartData().catch(err=>{
         dispatch(cartActions.showRequestStatus({
           status:'error',
@@ -49,6 +59,7 @@ function App() {
       })
         )
     })
+  }
       
 
   },[overallCart,dispatch])
